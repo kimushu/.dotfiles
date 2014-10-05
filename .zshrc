@@ -11,27 +11,32 @@ export LANG=ja_JP.UTF-8
 #------------------------------------------------------------
 # Path for executables / libraries
 #
-PATH=$HOME/local/bin:$HOME/.local/bin
-PATH=$PATH:/bin:/usr/bin:/usr/local/bin
-PATH=$PATH:/sbin:/usr/sbin:/usr/local/sbin
-export LD_LIBRARY_PATH=/usr/local/lib
+export PATH=$HOME/local/bin:$HOME/.local/bin:$PATH
+#PATH=$PATH:/bin:/usr/bin:/usr/local/bin
+#PATH=$PATH:/sbin:/usr/sbin:/usr/local/sbin
+#export LD_LIBRARY_PATH=/usr/local/lib
 
 #------------------------------------------------------------
 # Other environments
 #
-export MANPATH=$HOME/local/man:/usr/share/man:/usr/local/man/:/usr/local/share/man
+export MANPATH=$HOME/local/man:$HOME/.local/man:$MANPATH
 export EDITOR=vim
 
 #------------------------------------------------------------
 # Machine-dependent environments
 #
-if [ -e /etc/profile.d ]; then
-  for sh in /etc/profile.d/*.zsh
-  do
-    . $sh
-  done
-  unset sh
-fi
+setopt nonomatch
+function loadprofiled {
+  if ls $1/*.zsh > /dev/null 2>&1; then
+    for sh in $1/*.zsh
+    do
+      . $sh
+    done
+    unset sh
+  fi
+}
+loadprofiled /etc/profile.d
+loadprofiled $HOME/.local/profile.d
 
 #------------------------------------------------------------
 # Key binds
@@ -113,6 +118,7 @@ setopt print_eight_bit    # 日本語サポート用。8-bit文字を印字す�
 setopt share_history      # zshプロセス間で履歴を共有する
 setopt no_flow_control    # C-s/C-qを無効化する
 setopt pushd_minus        # pushd補完の+/-の意味を入れ替える
+setopt nomatch            # ワイルドカード展開失敗をエラー扱いにする
 
 #------------------------------------------------------------
 # Shell history
