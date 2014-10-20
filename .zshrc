@@ -39,6 +39,11 @@ loadprofiled /etc/profile.d
 loadprofiled $HOME/.local/profile.d
 
 #------------------------------------------------------------
+# Custom completion
+#
+source ~/.git-flow-completion/git-flow-completion.zsh
+
+#------------------------------------------------------------
 # Key binds
 #
 bindkey -e

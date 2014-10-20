@@ -5,7 +5,7 @@ ok=0
 ng=0
 for x in .*
 do
-  if [[ "$x" = "." || "$x" = ".." || "$x" = ".git" || "${x%.swp}" != "$x" ]]; then
+  if [[ "$x" = "." || "$x" = ".." || "$x" = ".git" || "$x" = ".gitmodules" || "${x%.swp}" != "$x" ]]; then
     continue
   fi
   link=$HOME/$x
