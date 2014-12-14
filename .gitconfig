@@ -1,0 +1,18 @@
+[alias]
+	br = branch
+	ci = commit
+	ca = commit -a
+	cam = commit -a --amend
+	co = checkout
+	st = status
+	ul = pull
+	us = push
+[color]
+	ui = auto
+[merge]
+	ff = false
+	tool = vimdiff
+[push]
+	default = simple
+[core]
+	autocrlf = false
