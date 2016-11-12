@@ -41,6 +41,8 @@ loadprofiled $HOME/.local/profile.d
 #------------------------------------------------------------
 # Custom completion
 #
+zstyle ':completion:*:*:git:*' script ~/.git-completion.zsh
+source ~/.git-completion/git-prompt.sh
 source ~/.git-flow-completion/git-flow-completion.zsh
 
 #------------------------------------------------------------
