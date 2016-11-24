@@ -11,7 +11,7 @@
 [color]
 	ui = auto
 [merge]
-	ff = false
+	ff = true
 	tool = vimdiff
 [push]
 	default = simple
