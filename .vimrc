@@ -3,6 +3,11 @@
 " ================================================================================
 
 " ----------------------------------------------------------------
+" Encoding
+"
+set fileencodings=utf-8,euc-jp,iso-2022-jp,cp932,ucs-2le,ucs-2
+
+" ----------------------------------------------------------------
 " For Vundle.vim
 " (git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim)
 set nocompatible              " be iMproved, required
@@ -22,8 +27,11 @@ Plugin 'Shougo/neosnippet'
 Plugin 'Shougo/neosnippet-snippets'
 Plugin 'majutsushi/tagbar'
 Plugin 'simeji/winresizer'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'kchmck/vim-coffee-script'
 
 call vundle#end()             " required
+syntax enable
 filetype plugin indent on     " required
 
 " ----------------------------------------------------------------
@@ -45,6 +53,8 @@ colorscheme jellybeans
 " Search
 set incsearch
 set ignorecase
+set smartcase
+set hlsearch
 
 " ----------------------------------------------------------------
 " Mouse
@@ -84,7 +94,6 @@ inoremap <expr><BS>   neocomplete#smart_close_popup()."\<C-h>"
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " ----------------------------------------------------------------
@@ -103,6 +112,16 @@ set conceallevel=2 concealcursor=niv
 "
 let g:tagbar_width = 28
 nnoremap <silent> <leader>t :TagbarToggle<CR>
+
+" ----------------------------------------------------------------
+" For jedi-vim
+"
+autocmd FileType python setlocal completeopt-=preview
+
+" ----------------------------------------------------------------
+" For vim-coffee-script
+"
+autocmd FileType coffee setlocal et sts=2 sw=2
 
 " ----------------------------------------------------------------
 " Other key bingings
@@ -144,5 +163,8 @@ noremap @[ gt
 noremap <ESC>[1;3C gt
 noremap [@ gT
 noremap <ESC>[1;3D gT
+
+" Disable highlights
+noremap <silent> <ESC>[34~ :noh<CR>
 
 " vim: set et sts=2 sw=2:
