@@ -21,6 +21,7 @@ export PATH=$HOME/local/bin:$HOME/.local/bin:$PATH
 #
 export MANPATH=$HOME/local/man:$HOME/.local/man:$MANPATH
 export EDITOR=vim
+unset SSH_ASKPASS
 
 #------------------------------------------------------------
 # Machine-dependent environments
@@ -191,6 +192,9 @@ alias rgrep='grep -R --exclude="*.svn*" --exclude="*.git*"'
 alias tmux='tmux -2'
 alias tm='tmux'
 alias tma='tmux attach'
+
+# npm
+alias npm-preview='tar -tf $(npm pack | tail -1)'
 
 #------------------------------------------------------------
 # Window title for some terminals
