@@ -25,10 +25,15 @@ Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/neocomplete'
 Plugin 'Shougo/neosnippet'
 Plugin 'Shougo/neosnippet-snippets'
+Plugin 'Shougo/vinarise'
 Plugin 'majutsushi/tagbar'
 Plugin 'simeji/winresizer'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'digitaltoad/vim-pug'
+Plugin 'mmalecki/vim-node.js'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'tomtom/tcomment_vim'
 
 call vundle#end()             " required
 syntax enable
@@ -108,6 +113,18 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 set conceallevel=2 concealcursor=niv
 
 " ----------------------------------------------------------------
+" For Vinarise
+"
+"FIXME: This blocks gzip functionality :-(
+"augroup BinaryXXD
+"  autocmd!
+"  autocmd BufReadPre   *.bin let &binary=1
+"  autocmd BufReadPost  * if &binary | Vinarise
+"  autocmd BufWritePre  * if &binary | Vinarise | endif
+"  autocmd BufWritePost * if &binary | Vinarise
+"augroup END
+
+" ----------------------------------------------------------------
 " For tagbar
 "
 let g:tagbar_width = 28
@@ -119,9 +136,17 @@ nnoremap <silent> <leader>t :TagbarToggle<CR>
 autocmd FileType python setlocal completeopt-=preview
 
 " ----------------------------------------------------------------
-" For vim-coffee-script
+" For filetype preferences
 "
 autocmd FileType coffee setlocal et sts=2 sw=2
+autocmd FileType javascript setlocal et sts=2 sw=2
+autocmd FileType json setlocal et sts=2 sw=2
+autocmd FileType pug setlocal et sts=2 sw=2
+
+" ----------------------------------------------------------------
+" For vim-indent-guides
+"
+"let g:indent_guides_enable_on_vim_startup = 1
 
 " ----------------------------------------------------------------
 " Other key bingings
