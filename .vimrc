@@ -31,9 +31,11 @@ Plugin 'simeji/winresizer'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'digitaltoad/vim-pug'
+Plugin 'shohei/vim-eagle-ulp'
 Plugin 'mmalecki/vim-node.js'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'tomtom/tcomment_vim'
+Plugin 'concise/vim-guess-indent'
 
 call vundle#end()             " required
 syntax enable
