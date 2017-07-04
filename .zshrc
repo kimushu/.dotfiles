@@ -146,11 +146,13 @@ autoload -Uz compinit; compinit
 #
 
 # ls
-alias ls='ls -F --color=auto'
-alias  l='ls -glF --color=auto'
-alias la='ls -alhF --color=auto'
-alias l1='ls -1F --color=auto'
-alias sl=ls
+if [[ "$(uname)" != "Darwin" ]]; then
+  alias ls='ls -F --color=auto'
+  alias  l='ls -glF --color=auto'
+  alias la='ls -alhF --color=auto'
+  alias l1='ls -1F --color=auto'
+  alias sl=ls
+fi
 
 # exit
 if [[ $ESHLVL -gt 1 ]]; then
