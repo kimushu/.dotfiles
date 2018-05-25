@@ -6,6 +6,7 @@
 " Encoding
 "
 set fileencodings=utf-8,euc-jp,iso-2022-jp,cp932,ucs-2le,ucs-2
+set nofixeol
 
 " ----------------------------------------------------------------
 " For Vundle.vim
@@ -36,6 +37,7 @@ Plugin 'mmalecki/vim-node.js'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'concise/vim-guess-indent'
+Plugin 'leafgarland/typescript-vim'
 
 call vundle#end()             " required
 syntax enable
