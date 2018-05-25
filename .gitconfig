@@ -8,6 +8,7 @@
 	ul = pull
 	us = push
 	pa = add -p
+	chp = cherry-pick
 [color]
 	ui = auto
 [merge]
