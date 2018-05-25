@@ -3,6 +3,11 @@ dir=$(cd $(dirname $0) && pwd)
 rel=${dir#$HOME/}
 ok=0
 ng=0
+
+# Update submodules
+git submodule update --init
+
+# Make links
 for x in .*
 do
   if [[ "$x" = "." || "$x" = ".." || "$x" = ".git" || "$x" = ".gitmodules" || "${x%.swp}" != "$x" ]]; then
@@ -32,4 +37,22 @@ do
     fi
   fi
 done
+
+# clone Vundle
+dest=~/.vim/bundle/Vundle.vim
+if [[ ! -e $dest ]]; then
+  if git clone https://github.com/VundleVim/Vundle.vim.git $dest; then
+    echo "info: cloned Vundle.vim"
+    echo "info: execute \"VundleInstall\" command in vim!"
+    ok=$(($ok+1))
+  else
+    echo "error: cannot clone Vundle.vim"
+    ng=$(($ng+1))
+  fi
+else
+  echo "info: skipped cloning Vundle.vim"
+fi
+
+# clone 
+
 test $ng -eq 0
