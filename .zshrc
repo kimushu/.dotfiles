@@ -198,6 +198,9 @@ alias tma='tmux attach'
 # npm
 alias npm-preview='tar -tf $(npm pack | tail -1)'
 
+# man
+alias eman='LC_ALL=C man'
+
 #------------------------------------------------------------
 # Window title for some terminals
 #
