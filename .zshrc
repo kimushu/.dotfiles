@@ -3,18 +3,16 @@
 #------------------------------------------------------------
 # Language / Character set
 #
-export LC_ALL=ja_JP.UTF-8
-export LC_CTYPE=ja_JP.UTF-8
-export LC_TIME=C
-export LANG=ja_JP.UTF-8
+#export LANG=ja_JP.UTF-8
+export LANG=en_US.UTF-8
 
 #------------------------------------------------------------
 # Path for executables / libraries
 #
-export PATH=$HOME/local/bin:$HOME/.local/bin:$PATH
+export PATH=$HOME/local/bin:$HOME/.local/bin:/snap/bin:$PATH
 #PATH=$PATH:/bin:/usr/bin:/usr/local/bin
 #PATH=$PATH:/sbin:/usr/sbin:/usr/local/sbin
-#export LD_LIBRARY_PATH=/usr/local/lib
+export LD_LIBRARY_PATH=/usr/local/lib
 
 #------------------------------------------------------------
 # Other environments
@@ -22,6 +20,8 @@ export PATH=$HOME/local/bin:$HOME/.local/bin:$PATH
 export MANPATH=$HOME/local/man:$HOME/.local/man:$MANPATH
 export EDITOR=vim
 unset SSH_ASKPASS
+#export TERM=xterm+256color
+export TERM=xterm
 
 #------------------------------------------------------------
 # Machine-dependent environments
@@ -59,8 +59,6 @@ bindkey "OH"  beginning-of-line
 bindkey "OF"  end-of-line
 bindkey ""    history-beginning-search-backward
 bindkey ""    history-beginning-search-forward
-bindkey "OD"  backward-word
-bindkey "OC"  forward-word
 bindkey "[1;5D"   backward-word
 bindkey "[1;5C"   forward-word
 bindkey "[1;3D"   backward-char
@@ -86,7 +84,16 @@ precmd() {
 if [[ -n "$TMUX" ]]; then
   let ESHLVL="$SHLVL - 1"
 else
-  let ESHLVL="$SHLVL"
+  pexe=$(readlink /proc/$PPID/exe)
+  pdir=$(dirname $(dirname $pexe))
+  if [ "$pdir" = "$HOME/.vscode-server/bin" ]; then
+    let ESHLVL="1"
+    SHLVL=1
+  else
+    let ESHLVL="$SHLVL"
+  fi
+  unset pexe
+  unset pdir
 fi
 export ESHLVL
 if [[ $ESHLVL -le 1 ]]; then
@@ -101,6 +108,7 @@ else
   PROMPT="%{[1;32m%}%n@%m$shlvlstr$ %{[0m%}"
   RPROMPT="%{[0;32m%}[%{[0;33m%}%1v%{[0;32m%}%48<...<%~]%{[0m%}"
 fi
+unset shlvlstr
 
 #------------------------------------------------------------
 # Shell options
