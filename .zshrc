@@ -85,7 +85,7 @@ if [[ -n "$TMUX" ]]; then
   let ESHLVL="$SHLVL - 1"
 else
   pexe=$(readlink /proc/$PPID/exe)
-  pdir=$(dirname $(dirname $pexe))
+  pdir=$(dirname $(dirname $pexe 2> /dev/null) 2> /dev/null)
   if [ "$pdir" = "$HOME/.vscode-server/bin" ]; then
     let ESHLVL="1"
     SHLVL=1
