@@ -20,6 +20,7 @@ Plugin 'VundleVim/Vundle.vim'
 " List of bundled plugins
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tpope/vim-fugitive'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'vim-utils/vim-man'
 Plugin 'Shougo/unite.vim'
@@ -74,7 +75,7 @@ set ttymouse=xterm2
 " For vim-airline
 "
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'murmur'
+let g:airline_theme = 'simple'
 
 " ----------------------------------------------------------------
 " For vim-man
