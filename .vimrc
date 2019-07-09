@@ -75,7 +75,7 @@ set ttymouse=xterm2
 " For vim-airline
 "
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'simple'
+let g:airline_theme = 'murmur'
 
 " ----------------------------------------------------------------
 " For vim-man
